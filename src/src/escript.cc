@@ -3917,6 +3917,8 @@ timelimit_cb_1_5(lua_State *L, lua_Debug *d)
     }
 }
 
+static const char* blacklist[] = {"loadfile", "dofile", NULL};
+
 void
 escript::init()
 {
@@ -3932,8 +3934,10 @@ escript::init()
     this->L = luaL_newstate();
 
     this->L->userdata = (void*)this;
+
     luaopen_base(this->L);
     lua_pop(this->L, 1);
+    
     luaL_requiref(this->L, "math", luaopen_math, 1);
     lua_pop(this->L, 1);
 
@@ -3957,6 +3961,12 @@ escript::init()
     luaopen_socket_core(this->L);
     lua_pop(this->L, 1);
 #endif
+    
+    //apply blacklist
+    for (const char** p = blacklist; *p != NULL; p++) {
+        lua_pushnil(L);
+        lua_setglobal(L, *p);
+    }
 
     start_tick = SDL_GetTicks();
     func_start_tick = SDL_GetTicks();
