@@ -558,10 +558,15 @@ tbackend_init_surface()
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-    /*
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
-    */
+    int8_t msaa_level = settings["msaa_level"]->v.b;
+    if (msaa_level) {
+        tms_infof("MSAA %d", msaa_level);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, (int) msaa_level);
+    } else {
+        tms_progressf("NOMSAA");
+    }
+
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
     SDL_GLContext gl_context = SDL_GL_CreateContext(_window);

@@ -66,6 +66,12 @@ _settings::init()
     this->add("vsync",              S_BOOL,  true);
 #endif
 
+#if defined(TMS_BACKEND_ANDROID) || defined(TMS_BACKEND_IOS)
+    this->add("msaa_level",         S_INT8,  0);
+#else
+    this->add("msaa_level",         S_INT8,  4);
+#endif
+
     this->add("window_width",       S_INT32,   _tms.window_width);
     this->add("window_height",      S_INT32,   _tms.window_height);
     this->add("window_maximized",   S_BOOL,  0);

@@ -529,6 +529,7 @@ tbackend_init_surface()
     if (settings["window_maximized"]->v.b)
         flags |= SDL_WINDOW_MAXIMIZED;
 
+
     tms_progressf("Creating window... ");
     _window = SDL_CreateWindow("Principia", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _tms.window_width, _tms.window_height, flags);
     if (_window == NULL) {
@@ -538,17 +539,21 @@ tbackend_init_surface()
         tms_progressf("OK\n");
 
     _tms._window = _window;
-
+    
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 0);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-    /*
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
-    */
     SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+
+    int8_t msaa_level = settings["msaa_level"]->v.b;
+    if (msaa_level) {
+        tms_infof("MSAA %d", msaa_level);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, (int) msaa_level);
+    } else {
+        tms_progressf("NOMSAA");
+    }
 
     SDL_GLContext gl_context = SDL_GL_CreateContext(_window);
 

@@ -400,6 +400,10 @@ begin(void)
     //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glDepthMask(0xff);
     glCullFace(GL_BACK);
+    int8_t msaa_level = settings["msaa_level"]->v.b;
+    if (msaa_level) {
+        glEnable(GL_MULTISAMPLE);
+    }
 
     //glActiveTexture(GL_TEXTURE3);
     //glBindTexture(GL_TEXTURE_2D, gi_fb->fb_texture[gi_fb->toggle][0]);
