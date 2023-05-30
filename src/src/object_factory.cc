@@ -1,6 +1,7 @@
 #include "object_factory.hh"
 #include "beam.hh"
 #include "button.hh"
+#include "entity.hh"
 #include "tester.hh"
 #include "command.hh"
 #include "shelf.hh"
@@ -120,6 +121,7 @@
 #include "levelman.hh"
 #include "treasure_chest.hh"
 #include "decorations.hh"
+#include "matcher.hh"
 
 static entity* new_plank(void){return new beam(BEAM_THICK);};
 static entity* new_thinplank(void){return new beam(BEAM_THIN);};
@@ -365,6 +367,7 @@ static entity* new_treasure_chest(void){return new treasure_chest();};
 static entity* new_decoration(void){return new decoration();};
 static entity* new_megasplitter(void){return new megasplitter();};
 static entity* new_ladder_step(void){return new ladder_step();};
+static entity* new_matcher(void){return new matcher();};
 
 static entity* unimplemented(void){tms_errorf("not implemented");return 0;};
 
@@ -597,6 +600,7 @@ static entity* (*c_creator[])(void) = {
     &new_megasplitter,
     &new_ladder_step,
     &new_mini_spikebot, /* 225 */
+    &new_matcher,
 };
 
 static int num_creators = sizeof(c_creator)/sizeof(void*);
@@ -758,6 +762,7 @@ static int c4_ids[] = {
     O_LIMIT,
     O_SNAP,
     O_BOUNDARY,
+    O_MATCHER,
 };
 
 /* Signal-i2o1 */
