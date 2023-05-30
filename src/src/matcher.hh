@@ -20,8 +20,8 @@ class matcher : public i1o1gate
     const char* get_name(){return "Matcher";}
     void init();
 
-    MatcherCase cases[MAX_CASES],
-    usize_t num_cases,
+    MatcherCase cases[MAX_CASES];
+    size_t num_cases;
 };
 
 #endif
