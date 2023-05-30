@@ -73,6 +73,7 @@
 #define DIALOG_TREASURE_CHEST   160
 #define DIALOG_DECORATION       161
 #define DIALOG_SFXEMITTER_2     162
+#define DIALOG_MATCHER          163
 
 #define CLOSE_ALL_DIALOGS                  200
 #define CLOSE_ABSOLUTELY_ALL_DIALOGS       201
