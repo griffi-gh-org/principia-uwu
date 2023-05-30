@@ -567,6 +567,9 @@
     <ClCompile Include="..\..\..\src\tms\backends\windows\main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\src\matcher.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\src\absorber.hh">
@@ -1112,5 +1115,8 @@
     <ClInclude Include="..\..\..\src\src\ysplitter.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\..\src\src\matcher.hh">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
