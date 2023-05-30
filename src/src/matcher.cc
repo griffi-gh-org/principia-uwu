@@ -2,11 +2,13 @@
 #include "game.hh"
 #include "entity.hh"
 #include "model.hh"
+#include "ui.hh"
 
 matcher::matcher()
 {
   this->set_mesh(mesh_factory::get_mesh(MODEL_I1O1_EMPTY));
   this->set_flag(ENTITY_HAS_CONFIG, true);
+  this->dialog_id = DIALOG_MATCHER;
 }
 
 void matcher::init() {
