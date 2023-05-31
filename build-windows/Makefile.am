@@ -323,6 +323,7 @@ principia.rc \
 ../src/src/tiles.cc \
 ../src/src/activator.cc \
 ../src/src/treasure_chest.cc \
+../src/src/mexpr.cc \
 \
 ../src/src/Box2D/Particle/b2Particle.cc \
 ../src/src/Box2D/Particle/b2ParticleGroup.cc \

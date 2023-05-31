@@ -250,6 +250,7 @@
     <ClCompile Include="..\..\..\src\src\wplug.cc" />
     <ClCompile Include="..\..\..\src\src\ysplitter.cc" />
     <ClCompile Include="..\..\..\src\tms\backends\windows\main.cc" />
+    <ClCompile Include="..\..\..\src\src\mexpr.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\src\absorber.hh" />
@@ -433,6 +434,7 @@
     <ClInclude Include="..\..\..\src\src\world.hh" />
     <ClInclude Include="..\..\..\src\src\wplug.hh" />
     <ClInclude Include="..\..\..\src\src\ysplitter.hh" />
+    <ClInclude Include="..\..\..\src\src\mexpr.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
