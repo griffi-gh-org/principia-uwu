@@ -10856,7 +10856,10 @@ game::puzzle_play(int type)
     } else if (type == PUZZLE_TEST_PLAY) {
         this->save(false);
 
-        this->open_play(LEVEL_LOCAL, W->level.local_id, NULL, true);
+        this->open_play(LEVEL_LOCAL, W->level.local_id, NULL, true, false);
+        //this->open_play(pkg_type, level_id, opd->pkg, opd->test_playing, opd->is_main_puzzle);
+        this->resume_action = GAME_RESUME_OPEN;
+
         ui::message("Now testplaying your level! Press B to return.");
     } else {
         tms_warnf("Invalid input for puzzle play");
