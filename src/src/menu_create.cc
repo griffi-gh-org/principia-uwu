@@ -52,6 +52,13 @@ menu_create::widget_clicked(principia_wdg *w, uint8_t button_id, int pid)
             tms::set_screen(G);
             break;
 
+        case BTN_PUZZLE:
+            G->resume_action = GAME_RESUME_NEW_EMPTY;
+            G->resume_level_type = LCAT_PUZZLE;
+            G->screen_back = 0;
+            tms::set_screen(G);
+            break;
+
         case BTN_OPEN:
             ui::open_dialog(DIALOG_OPEN);
             break;
@@ -136,6 +143,16 @@ menu_create::menu_create()
         this->wdg_empty_adventure->add();
 
         this->wdg_empty_adventure->label->set_scale(this->wdg_create_new_level->label->get_scale());
+
+        this->wdg_puzzle = this->wm->create_widget(
+                this->get_surface(), TMS_WDG_LABEL,
+                BTN_PUZZLE, area);
+        this->wdg_puzzle->set_label("Puzzle", font::xmedium);
+        this->wdg_puzzle->priority = 970;
+        this->wdg_puzzle->render_background = true;
+        this->wdg_puzzle->add();
+
+        this->wdg_puzzle->label->set_scale(this->wdg_create_new_level->label->get_scale());
 
         this->wdg_custom = this->wm->create_widget(
                 this->get_surface(), TMS_WDG_LABEL,
@@ -276,6 +293,11 @@ menu_create::handle_input(tms::event *ev, int action)
             case TMS_KEY_3:
                 this->wdg_custom->click();
                 break;
+            
+            case TMS_KEY_P:
+            case TMS_KEY_4:
+                this->wdg_puzzle->click();
+                break;
 
             case TMS_KEY_O:
                 this->wdg_open->click();
@@ -386,6 +408,7 @@ menu_create::refresh_widgets()
     this->wdg_adventure->add();
     this->wdg_empty_adventure->add();
     this->wdg_custom->add();
+    this->wdg_puzzle->add();
     this->wdg_open->add();
 
     this->wdg_getting_started->add();
